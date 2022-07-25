@@ -1,0 +1,18 @@
+<div id="employee">
+
+<h1><%="#{@employee.name}'s Show page"%></h1>
+
+<p>Department: <%= @employee.department.name %> </p>
+  Open Tickets: <% @employee.tickets.order_tickets.each do |ticket| %>
+  <%= ticket.subject %>
+  <% end %>
+    <p>Oldest Ticket: <%= @employee.tickets.oldest_ticket %></p>
+
+    <h3>Add a Ticket</h3>
+    <%= form_with url: "/employee_tickets", method: :post, local: true do |form| %>
+      <P><%= form.label :ticket_subject%></P>
+      <P><%= form.text_field :ticket_subject%></P>
+      <P><%= form.submit 'Submit'%></P>
+    <% end %>
+
+</div>
